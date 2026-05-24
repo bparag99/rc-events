@@ -1,4 +1,5 @@
-import { User, Shield, Building2, Bell, LogOut, ChevronRight, Sparkles } from 'lucide-react';
+import { useState, useEffect, type ReactNode } from 'react';
+import { User, Shield, Building2, Bell, LogOut, ChevronRight, Sparkles, Moon, Sun } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useAppData } from '../context/AppDataContext';
 import { ActionButton } from '../app/lib/ActionButton';
@@ -8,6 +9,26 @@ export function SettingsPage() {
   const { user, logout } = useAuth();
   const { getUnreadNotifications } = useAppData();
   const unreadCount = getUnreadNotifications().length;
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('rc-events-theme');
+      if (stored) return stored === 'dark';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isDark) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    localStorage.setItem('rc-events-theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
+
+  const toggleTheme = () => setIsDark(prev => !prev);
 
   if (!user) return null;
 
@@ -35,6 +56,25 @@ export function SettingsPage() {
         <SettingRow icon={Shield} label="Role" value={user.role.replace('_', ' ')} />
         <SettingRow icon={Building2} label="Organization" value="Wedding Dreams Pvt. Ltd." />
         <SettingRow icon={Bell} label="Notifications" value={`${unreadCount} unread`} />
+        <SettingRow
+          icon={isDark ? Moon : Sun}
+          label="Dark Mode"
+          value=""
+          action={
+            <button
+              onClick={toggleTheme}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                isDark ? 'bg-brand-primary' : 'bg-switch-background'
+              }`}
+            >
+              <span
+                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  isDark ? 'translate-x-6' : 'translate-x-1'
+                }`}
+              />
+            </button>
+          }
+        />
       </div>
 
       <div className="bg-card border border-border rounded-lg p-4 mb-6">
@@ -63,7 +103,7 @@ export function SettingsPage() {
   );
 }
 
-function SettingRow({ icon: Icon, label, value }: { icon: any; label: string; value: string }) {
+function SettingRow({ icon: Icon, label, value, action }: { icon: any; label: string; value?: string; action?: ReactNode }) {
   return (
     <div className="flex items-center justify-between bg-card border border-border rounded-lg px-4 py-3">
       <div className="flex items-center gap-3">
@@ -71,8 +111,8 @@ function SettingRow({ icon: Icon, label, value }: { icon: any; label: string; va
         <span className="text-sm">{label}</span>
       </div>
       <div className="flex items-center gap-2">
-        <span className="text-sm text-muted-foreground">{value}</span>
-        <ChevronRight size={14} className="text-muted-foreground" />
+        {value && <span className="text-sm text-muted-foreground">{value}</span>}
+        {action || <ChevronRight size={14} className="text-muted-foreground" />}
       </div>
     </div>
   );

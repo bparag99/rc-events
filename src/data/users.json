@@ -1,9 +1,9 @@
 [
   {
     "id": "user_admin",
-    "name": "Raj Sharma",
+    "name": "Parag Bajaj",
     "phone": "+919999999999",
-    "email": "raj@weddingdreams.com",
+    "email": "parag@runningchores.com",
     "role": "admin",
     "organization_id": "org_001",
     "is_active": true
@@ -30,7 +30,7 @@
     "id": "user_planner",
     "name": "Priya Sharma",
     "phone": "+919876543210",
-    "email": "priya@weddingdreams.com",
+    "email": "priya@runningchores.com",
     "role": "planner",
     "organization_id": "org_001",
     "is_active": true
@@ -39,7 +39,7 @@
     "id": "user_coordinator",
     "name": "Raj Kumar",
     "phone": "+919123456789",
-    "email": "rajk@weddingdreams.com",
+    "email": "rajk@runningchores.com",
     "role": "coordinator",
     "organization_id": "org_001",
     "is_active": true
