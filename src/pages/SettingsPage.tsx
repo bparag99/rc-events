@@ -11,9 +11,7 @@ export function SettingsPage() {
   const unreadCount = getUnreadNotifications().length;
   const [isDark, setIsDark] = useState(() => {
     if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('rc-events-theme');
-      if (stored) return stored === 'dark';
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return localStorage.getItem('rc-events-theme') === 'dark';
     }
     return false;
   });
