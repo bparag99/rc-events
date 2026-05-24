@@ -10,7 +10,7 @@ import { TaskDetailPage } from '../pages/TaskDetailPage';
 import { ApprovalBoardPage } from '../pages/ApprovalBoardPage';
 import { VendorBoardPage } from '../pages/VendorBoardPage';
 import { BudgetPage } from '../pages/BudgetPage';
-import { CalendarPage } from '../pages/CalendarPage';
+import { ContactsPage } from '../pages/ContactsPage';
 import { ChatPage } from '../pages/ChatPage';
 import { AlertsPage } from '../pages/AlertsPage';
 import { SettingsPage } from '../pages/SettingsPage';
@@ -36,7 +36,7 @@ function MainApp() {
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
-    setView(tab === 'dashboard' ? 'dashboard' : tab === 'alerts' ? 'alerts' : tab === 'calendar' ? 'calendar' : tab === 'chat' ? 'chat' : tab === 'settings' ? 'settings' : tab);
+    setView(tab === 'dashboard' ? 'dashboard' : tab === 'alerts' ? 'alerts' : tab === 'contacts' ? 'contacts' : tab === 'chat' ? 'chat' : tab === 'settings' ? 'settings' : tab);
     setSelectedTask(null);
   };
 
@@ -61,7 +61,7 @@ function MainApp() {
       case 'vendors': return { title: 'Vendors', subtitle: currentEvent ? `${currentEvent.event_name}` : '' };
       case 'budget': return { title: 'Budget', subtitle: currentEvent ? `${currentEvent.event_name}` : '' };
       case 'chat': return { title: 'AI Chat', subtitle: 'Event Operations Copilot' };
-      case 'calendar': return { title: 'Calendar', subtitle: 'Events & Deadlines' };
+      case 'contacts': return { title: 'Contacts', subtitle: 'Event Contacts & Vendors' };
       case 'alerts': return { title: 'Alerts', subtitle: 'Notifications & Risks' };
       case 'settings': return { title: 'Settings', subtitle: 'Profile & Preferences' };
       default: return { title: 'RC Events', subtitle: '' };
@@ -69,7 +69,7 @@ function MainApp() {
   };
 
   const pageTitle = getPageTitle();
-  const showBack = !['dashboard', 'chat', 'calendar', 'alerts', 'settings'].includes(view);
+  const showBack = !['dashboard', 'chat', 'contacts', 'alerts', 'settings'].includes(view);
 
   const handleBack = () => {
     if (view === 'event-details' || view === 'task-detail') {
@@ -108,8 +108,8 @@ function MainApp() {
         return <BudgetPage eventId={eventId} />;
       case 'chat':
         return <ChatPage />;
-      case 'calendar':
-        return <CalendarPage />;
+      case 'contacts':
+        return <ContactsPage />;
       case 'alerts':
         return <AlertsPage />;
       case 'settings':

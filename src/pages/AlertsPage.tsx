@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import { Bell, AlertTriangle, CheckCircle, Clock, Mail } from 'lucide-react';
+import { Bell, AlertTriangle, CheckCircle, Clock, Mail, CalendarDays } from 'lucide-react';
 import { useAppData } from '../context/AppDataContext';
-import { StatusBadge } from '../app/components/StatusBadge';
-import { ActionButton } from '../app/components/ActionButton';
+import { StatusBadge } from '../app/lib/StatusBadge';
+import { ActionButton } from '../app/lib/ActionButton';
+import { CalendarPage } from './CalendarPage';
 
 const tabs = [
   { id: 'all', label: 'All', icon: Bell },
   { id: 'approvals', label: 'Approvals', icon: CheckCircle },
   { id: 'risks', label: 'Risks', icon: AlertTriangle },
+  { id: 'calendar', label: 'Calendar', icon: CalendarDays },
 ];
 
 export function AlertsPage() {
@@ -23,6 +25,8 @@ export function AlertsPage() {
         return <ApprovalsList approvals={pendingApprovals} />;
       case 'risks':
         return <RisksList />;
+      case 'calendar':
+        return <CalendarPage />;
       default:
         return <NotificationsList notifications={notifications} onMarkRead={markNotificationRead} />;
     }

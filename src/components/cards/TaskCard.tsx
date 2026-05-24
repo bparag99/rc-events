@@ -1,5 +1,5 @@
 import { CalendarDays, User, AlertCircle } from 'lucide-react';
-import { StatusBadge } from '../../app/components/StatusBadge';
+import { StatusBadge } from '../../app/lib/StatusBadge';
 import type { Task } from '../../types';
 
 interface TaskCardProps {

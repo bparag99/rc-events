@@ -141,111 +141,91 @@ export function ContactsPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="bg-card border-b border-border sticky top-0 z-10">
-        <div className="container mx-auto px-6 py-6">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h1 className="text-2xl font-semibold flex items-center gap-2">
-                <UsersIcon size={28} className="text-brand-primary" />
-                Event Contacts
-              </h1>
-              <p className="text-sm text-muted-foreground mt-1">
-                {filteredContacts.length} contact{filteredContacts.length !== 1 ? 's' : ''} for this event
-              </p>
-            </div>
-            <ActionButton variant="primary" icon={<UserPlus size={16} />}>
-              Add Contact
-            </ActionButton>
+      <div className="px-4 py-4 space-y-2">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-xl font-semibold">Event Contacts</h1>
+            <p className="text-xs text-muted-foreground">
+              {filteredContacts.length} contact{filteredContacts.length !== 1 ? 's' : ''} for this event
+            </p>
           </div>
+          <ActionButton variant="primary" icon={<UserPlus size={14} />}>
+            Add
+          </ActionButton>
+        </div>
 
-          {/* Search and Filter */}
-          <div className="flex flex-col md:flex-row gap-3">
-            {/* Search Bar */}
-            <div className="flex-1 relative">
-              <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-              <input
-                type="text"
-                placeholder="Search by name, role, or event part..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring"
-              />
-            </div>
-
-            {/* Event Part Filter */}
-            <div className="flex items-center gap-2">
-              <Filter size={18} className="text-muted-foreground" />
-              <select
-                value={selectedEventPart}
-                onChange={(e) => setSelectedEventPart(e.target.value)}
-                className="px-4 py-2 bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring min-w-[200px]"
-              >
-                {eventParts.map((part) => (
-                  <option key={part} value={part}>
-                    {part === 'All' ? 'All Event Parts' : part}
-                  </option>
-                ))}
-              </select>
-            </div>
+        {/* Search and Filter */}
+        <div className="flex flex-col sm:flex-row gap-2">
+          <div className="flex-1 relative">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+            <input
+              type="text"
+              placeholder="Search by name, role, or event part..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-9 pr-3 py-2 text-sm bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <Filter size={16} className="text-muted-foreground shrink-0" />
+            <select
+              value={selectedEventPart}
+              onChange={(e) => setSelectedEventPart(e.target.value)}
+              className="px-3 py-2 text-sm bg-input-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring"
+            >
+              {eventParts.map((part) => (
+                <option key={part} value={part}>
+                  {part === 'All' ? 'All Event Parts' : part}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
-      </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-6 py-6">
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className="bg-card border border-border rounded-lg p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Total Contacts</p>
-                <p className="text-2xl font-semibold">{contacts.length}</p>
-              </div>
-              <UsersIcon size={32} className="text-brand-primary" />
-            </div>
+        <div className="grid grid-cols-3 gap-2 mb-4">
+          <div className="bg-card border border-border rounded-lg p-3">
+            <p className="text-xs text-muted-foreground">Total</p>
+            <p className="text-lg font-semibold">{contacts.length}</p>
           </div>
-
-          <div className="bg-card border border-border rounded-lg p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Confirmed Vendors</p>
-                <p className="text-2xl font-semibold">
-                  {contacts.filter((c) => c.status === 'success').length}
-                </p>
-              </div>
-              <Calendar size={32} className="text-status-success" />
-            </div>
+          <div className="bg-card border border-border rounded-lg p-3">
+            <p className="text-xs text-muted-foreground">Confirmed</p>
+            <p className="text-lg font-semibold text-status-success">
+              {contacts.filter((c) => c.status === 'success').length}
+            </p>
           </div>
-
-          <div className="bg-card border border-border rounded-lg p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Pending Confirmations</p>
-                <p className="text-2xl font-semibold">
-                  {contacts.filter((c) => c.status === 'warning').length}
-                </p>
-              </div>
-              <Calendar size={32} className="text-status-warning" />
-            </div>
+          <div className="bg-card border border-border rounded-lg p-3">
+            <p className="text-xs text-muted-foreground">Pending</p>
+            <p className="text-lg font-semibold text-status-warning">
+              {contacts.filter((c) => c.status === 'warning').length}
+            </p>
           </div>
         </div>
 
         {/* Contacts List */}
         {selectedEventPart === 'All' ? (
           // Grouped by event part
-          <div className="space-y-8">
-            {Object.entries(groupedContacts).map(([eventPart, partContacts]) => (
+          <div className="space-y-4">
+            {Object.entries(groupedContacts)
+              .sort(([a], [b]) => {
+                if (a === 'All Events') return 1;
+                if (b === 'All Events') return -1;
+                return 0;
+              })
+              .map(([eventPart, partContacts]) => (
               <div key={eventPart}>
-                <div className="flex items-center gap-3 mb-4">
-                  <h2 className="text-lg font-semibold">{eventPart}</h2>
+                <div className="flex items-center gap-2 mb-3">
+                  <h2 className="text-base font-semibold">{eventPart}</h2>
                   <StatusBadge variant="info" showIcon={false}>
                     {partContacts.length} {partContacts.length === 1 ? 'Contact' : 'Contacts'}
                   </StatusBadge>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="flex overflow-x-auto gap-3 pb-2 snap-x snap-mandatory scrollbar-thin">
                   {partContacts.map((contact) => (
-                    <ContactCard key={contact.id} contact={contact} />
+                    <div key={contact.id} className="snap-start shrink-0 w-[280px]">
+                      <ContactCard contact={contact} />
+                    </div>
                   ))}
                 </div>
               </div>
@@ -254,17 +234,19 @@ export function ContactsPage() {
         ) : (
           // Filtered list
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <h2 className="text-lg font-semibold">
+            <div className="flex items-center gap-2 mb-3">
+              <h2 className="text-base font-semibold">
                 {selectedEventPart === 'All' ? 'All Contacts' : selectedEventPart}
               </h2>
               <StatusBadge variant="info" showIcon={false}>
                 {filteredContacts.length} {filteredContacts.length === 1 ? 'Contact' : 'Contacts'}
               </StatusBadge>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="flex overflow-x-auto gap-3 pb-2 snap-x snap-mandatory scrollbar-thin">
               {filteredContacts.map((contact) => (
-                <ContactCard key={contact.id} contact={contact} />
+                <div key={contact.id} className="snap-start shrink-0 w-[280px]">
+                  <ContactCard contact={contact} />
+                </div>
               ))}
             </div>
           </div>
@@ -272,10 +254,10 @@ export function ContactsPage() {
 
         {/* Empty State */}
         {filteredContacts.length === 0 && (
-          <div className="text-center py-12">
-            <UsersIcon size={48} className="mx-auto text-muted-foreground mb-4" />
-            <h3 className="text-lg font-medium mb-2">No contacts found</h3>
-            <p className="text-sm text-muted-foreground mb-4">
+          <div className="text-center py-8">
+            <UsersIcon size={32} className="mx-auto text-muted-foreground mb-3" />
+            <h3 className="text-sm font-medium mb-1">No contacts found</h3>
+            <p className="text-xs text-muted-foreground mb-3">
               Try adjusting your search or filters
             </p>
             <ActionButton variant="secondary" onClick={() => { setSearchQuery(''); setSelectedEventPart('All'); }}>

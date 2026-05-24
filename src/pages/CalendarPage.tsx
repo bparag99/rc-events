@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { ChevronLeft, ChevronRight, CalendarDays, AlertCircle } from 'lucide-react';
 import { useEvents } from '../context/EventContext';
 import { useAppData } from '../context/AppDataContext';
-import { StatusBadge } from '../app/components/StatusBadge';
+import { StatusBadge } from '../app/lib/StatusBadge';
 
 export function CalendarPage() {
   const { events, activeEvent } = useEvents();

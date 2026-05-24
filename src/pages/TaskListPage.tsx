@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Filter } from 'lucide-react';
 import { useAppData } from '../context/AppDataContext';
 import { TaskCard } from '../components/cards/TaskCard';
-import { StatusBadge } from '../app/components/StatusBadge';
+import { StatusBadge } from '../app/lib/StatusBadge';
 import type { Task, TaskStatus } from '../types';
 
 interface TaskListPageProps {

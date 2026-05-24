@@ -1,10 +1,10 @@
 import { Calendar, MapPin, Users, DollarSign, ArrowRight, CheckCircle, AlertTriangle, Clock, XCircle } from 'lucide-react';
 import { useEvents } from '../context/EventContext';
 import { useAppData } from '../context/AppDataContext';
-import { ProgressBar } from '../app/components/ProgressBar';
-import { StatusBadge } from '../app/components/StatusBadge';
-import { ActionButton } from '../app/components/ActionButton';
-import { DashboardCard } from '../app/components/DashboardCard';
+import { ProgressBar } from '../app/lib/ProgressBar';
+import { StatusBadge } from '../app/lib/StatusBadge';
+import { ActionButton } from '../app/lib/ActionButton';
+import { DashboardCard } from '../app/lib/DashboardCard';
 import type { Event } from '../types';
 
 interface EventDetailsPageProps {

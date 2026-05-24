@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { CheckCircle, XCircle } from 'lucide-react';
 import { useAppData } from '../context/AppDataContext';
 import { ApprovalCard } from '../components/cards/ApprovalCard';
-import { StatusBadge } from '../app/components/StatusBadge';
-import { ActionButton } from '../app/components/ActionButton';
+import { StatusBadge } from '../app/lib/StatusBadge';
+import { ActionButton } from '../app/lib/ActionButton';
 import type { Approval } from '../types';
 
 interface ApprovalBoardPageProps {

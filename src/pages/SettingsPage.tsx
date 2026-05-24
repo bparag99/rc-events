@@ -1,8 +1,8 @@
 import { User, Shield, Building2, Bell, LogOut, ChevronRight, Sparkles } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useAppData } from '../context/AppDataContext';
-import { ActionButton } from '../app/components/ActionButton';
-import { StatusBadge } from '../app/components/StatusBadge';
+import { ActionButton } from '../app/lib/ActionButton';
+import { StatusBadge } from '../app/lib/StatusBadge';
 
 export function SettingsPage() {
   const { user, logout } = useAuth();

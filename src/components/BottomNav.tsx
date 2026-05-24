@@ -1,9 +1,9 @@
-import { MessageSquare, LayoutDashboard, Calendar, Bell, Settings } from 'lucide-react';
+import { MessageSquare, LayoutDashboard, Users, Bell, Settings } from 'lucide-react';
 
 const tabs = [
   { id: 'chat', label: 'Chat', icon: MessageSquare },
+  { id: 'contacts', label: 'Contacts', icon: Users },
   { id: 'dashboard', label: 'RC Events', icon: LayoutDashboard },
-  { id: 'calendar', label: 'Calendar', icon: Calendar },
   { id: 'alerts', label: 'Alerts', icon: Bell },
   { id: 'settings', label: 'Settings', icon: Settings },
 ];

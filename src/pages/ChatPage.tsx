@@ -2,9 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 import { Sparkles, Send, Calendar, Users, DollarSign, ThumbsUp, Phone } from 'lucide-react';
 import { useEvents } from '../context/EventContext';
 import { useAppData } from '../context/AppDataContext';
-import { ChatMessage } from '../app/components/ChatMessage';
-import { QuickActionChip } from '../app/components/QuickActionChip';
-import { ActionButton } from '../app/components/ActionButton';
+import { ChatMessage } from '../app/lib/ChatMessage';
+import { QuickActionChip } from '../app/lib/QuickActionChip';
+import { ActionButton } from '../app/lib/ActionButton';
 import type { ChatMessage as ChatMessageType } from '../types';
 
 const aiResponses: Record<string, string> = {

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Filter } from 'lucide-react';
 import { useAppData } from '../context/AppDataContext';
 import { VendorCard } from '../components/cards/VendorCard';
-import { StatusBadge } from '../app/components/StatusBadge';
+import { StatusBadge } from '../app/lib/StatusBadge';
 
 interface VendorBoardPageProps {
   eventId: string;

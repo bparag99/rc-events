@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { CalendarDays, User, AlertCircle, Save } from 'lucide-react';
 import { useAppData } from '../context/AppDataContext';
-import { StatusBadge } from '../app/components/StatusBadge';
-import { ActionButton } from '../app/components/ActionButton';
+import { StatusBadge } from '../app/lib/StatusBadge';
+import { ActionButton } from '../app/lib/ActionButton';
 import type { Task } from '../types';
 
 interface TaskDetailPageProps {

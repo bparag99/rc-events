@@ -3,8 +3,8 @@ import { useAuth } from '../context/AuthContext';
 import { useEvents } from '../context/EventContext';
 import { useAppData } from '../context/AppDataContext';
 import { EventCard } from '../components/cards/EventCard';
-import { ActionButton } from '../app/components/ActionButton';
-import { StatusBadge } from '../app/components/StatusBadge';
+import { ActionButton } from '../app/lib/ActionButton';
+import { StatusBadge } from '../app/lib/StatusBadge';
 import type { Event } from '../types';
 
 interface DashboardPageProps {

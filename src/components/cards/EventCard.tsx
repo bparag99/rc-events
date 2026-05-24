@@ -1,6 +1,6 @@
 import { Calendar, MapPin, Users, ChevronRight } from 'lucide-react';
-import { ProgressBar } from '../../app/components/ProgressBar';
-import { StatusBadge } from '../../app/components/StatusBadge';
+import { ProgressBar } from '../../app/lib/ProgressBar';
+import { StatusBadge } from '../../app/lib/StatusBadge';
 import type { Event } from '../../types';
 
 interface EventCardProps {

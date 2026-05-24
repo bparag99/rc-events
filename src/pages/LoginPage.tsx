@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Sparkles, ShieldCheck, Store, Heart, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Store, Heart, ArrowRight } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import logo from '../assets/RC_LOGO.jpg';
 
 const roles = [
   {
@@ -38,8 +39,8 @@ export function LoginPage() {
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-primary mb-4">
-            <Sparkles size={32} className="text-white" />
+          <div className="mb-4 flex justify-center">
+            <img src={logo} alt="RC Events" className="h-16 w-auto" />
           </div>
           <h1 className="text-2xl font-bold">RC Events</h1>
           <p className="text-sm text-muted-foreground mt-1">AI-Powered Event Operations Platform</p>

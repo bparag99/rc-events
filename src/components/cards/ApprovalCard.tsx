@@ -1,6 +1,6 @@
 import { CalendarDays, User, ThumbsUp, ThumbsDown, Eye } from 'lucide-react';
-import { StatusBadge } from '../../app/components/StatusBadge';
-import { ActionButton } from '../../app/components/ActionButton';
+import { StatusBadge } from '../../app/lib/StatusBadge';
+import { ActionButton } from '../../app/lib/ActionButton';
 import type { Approval } from '../../types';
 
 interface ApprovalCardProps {

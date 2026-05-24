@@ -1,5 +1,5 @@
 import { Phone, Star, Mail, CheckCircle, AlertCircle } from 'lucide-react';
-import { StatusBadge } from '../../app/components/StatusBadge';
+import { StatusBadge } from '../../app/lib/StatusBadge';
 import type { Vendor, VendorAssignment } from '../../types';
 
 interface VendorCardProps {
