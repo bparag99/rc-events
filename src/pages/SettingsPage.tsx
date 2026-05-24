@@ -1,5 +1,5 @@
 import { useState, useEffect, type ReactNode } from 'react';
-import { User, Shield, Building2, Bell, LogOut, ChevronRight, Sparkles, Moon, Sun } from 'lucide-react';
+import { User, Shield, Building2, Bell, LogOut, ChevronRight, Sparkles, Moon, Sun, LayoutDashboard } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useAppData } from '../context/AppDataContext';
 import { ActionButton } from '../app/lib/ActionButton';
@@ -55,6 +55,12 @@ export function SettingsPage() {
         <SettingRow icon={Building2} label="Organization" value="Wedding Dreams Pvt. Ltd." />
         <SettingRow icon={Bell} label="Notifications" value={`${unreadCount} unread`} />
         <SettingRow
+          icon={LayoutDashboard}
+          label="Design Library"
+          value=""
+          onClick={() => window.open('/docs', '_blank')}
+        />
+        <SettingRow
           icon={isDark ? Moon : Sun}
           label="Dark Mode"
           value=""
@@ -101,9 +107,12 @@ export function SettingsPage() {
   );
 }
 
-function SettingRow({ icon: Icon, label, value, action }: { icon: any; label: string; value?: string; action?: ReactNode }) {
+function SettingRow({ icon: Icon, label, value, action, onClick }: { icon: any; label: string; value?: string; action?: ReactNode; onClick?: () => void }) {
   return (
-    <div className="flex items-center justify-between bg-card border border-border rounded-lg px-4 py-3">
+    <div
+      className={`flex items-center justify-between bg-card border border-border rounded-lg px-4 py-3 ${onClick ? 'cursor-pointer hover:bg-muted/50 transition-colors' : ''}`}
+      onClick={onClick}
+    >
       <div className="flex items-center gap-3">
         <Icon size={16} className="text-muted-foreground" />
         <span className="text-sm">{label}</span>
